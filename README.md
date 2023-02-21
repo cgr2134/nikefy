@@ -2,6 +2,7 @@
 Python library that amasses metadata from Nike.com website.
 
 ![GitHub](https://img.shields.io/badge/license-Apache--2.0-ffa500)
+![GitHub](https://img.shields.io/github/issues/cgr2134/nikefy?color=aqua)
 
 ## Overview
 
