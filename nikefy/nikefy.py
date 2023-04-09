@@ -5,7 +5,7 @@ import re
 
 
 def validate_url(url):
-    pattern = r'https?://www\.nike\.com/.*'
+    pattern = r'https?://www\.nike.com/.*'
     if not re.match(pattern, url):
         raise ValueError('Invalid URL: Must be a valid Nike.com URL.')
 
