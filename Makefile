@@ -42,7 +42,7 @@ test: ## clean and run unit tests
 	python -m pytest -v nikefy/tests
 
 coverage:  ## clean and run unit tests with coverage
-	python -m pytest -v example_project_python/tests --cov=nikefy --cov-branch --cov-fail-under=75 --cov-report term-missing
+	python -m pytest -v nikefy/tests --cov=nikefy --cov-branch --cov-fail-under=75 --cov-report term-missing
 
 # Alias
 tests: test
