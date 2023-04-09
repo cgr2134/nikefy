@@ -39,7 +39,7 @@ def sort_nike_products(products_info, sort_order='asc'):
         return products_info.sort_values('Price', ascending=False, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True)
     else:
         raise ValueError('Invalid sort order: Must be "asc" or "desc".')
-
+        
 
 def get_product_description(product_url):
     validate_url(product_url)
