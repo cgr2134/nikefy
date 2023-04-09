@@ -34,9 +34,9 @@ def get_nike_products(url):
 
 def sort_nike_products(products_info, sort_order='asc'):
     if sort_order == 'asc':
-        return products_info.sort_values('Price', ascending=True, key=lambda val: val.str.replace('$', '').astype('float64'))
+        return products_info.sort_values('Price', ascending=True, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True)
     elif sort_order == 'desc':
-        return products_info.sort_values('Price', ascending=False, key=lambda val: val.str.replace('$', '').astype('float64'))
+        return products_info.sort_values('Price', ascending=False, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True)
     else:
         raise ValueError('Invalid sort order: Must be "asc" or "desc".')
 
@@ -46,4 +46,3 @@ def get_product_description(product_url):
     soup = request_page(product_url)
     description = soup.find('div', {'class': 'description-preview body-2 css-1pbvugb'}).text.strip()
     return description
-
