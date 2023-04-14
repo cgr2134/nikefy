@@ -1,4 +1,4 @@
-from .nikefy import *
+from .nikefy import get_nike_products, sort_nike_products
 
 if __name__ == "__main__":
     url = 'https://www.nike.com/w/mens-shoes-nik1zy7ok'
