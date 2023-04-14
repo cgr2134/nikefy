@@ -27,9 +27,14 @@ def get_nike_products(url):
         type = product.find('div', {'class': 'product-card__subtitle'}).text.strip()
         product_url = product.find('a').get('href')
         description = get_product_description(product_url)
-        products_info.append(
-            {'Product Name': name, 'Price': price, 'Type': type, 'Description': description, 'Product URL': product_url}
-        )
+        data = {
+            'Product Name': name,
+            'Price': price,
+            'Type': type,
+            'Description': description,
+            'Product URL': product_url,
+        }
+        products_info.append(data)
     data = pd.DataFrame(products_info)
     return data
 

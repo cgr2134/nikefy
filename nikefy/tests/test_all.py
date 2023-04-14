@@ -1,4 +1,4 @@
-from nikefy import *
+from nikefy import request_page, validate_url, get_nike_products, sort_nike_products, get_product_description
 from unittest.mock import patch, mock_open, Mock, call
 import unittest
 
