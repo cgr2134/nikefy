@@ -27,19 +27,30 @@ def get_nike_products(url):
         type = product.find('div', {'class': 'product-card__subtitle'}).text.strip()
         product_url = product.find('a').get('href')
         description = get_product_description(product_url)
-        products_info.append({'Product Name': name, 'Price': price, 'Type': type, 'Description': description, 'Product URL': product_url})
+        data = {
+            'Product Name': name,
+            'Price': price,
+            'Type': type,
+            'Description': description,
+            'Product URL': product_url,
+        }
+        products_info.append(data)
     data = pd.DataFrame(products_info)
     return data
 
 
 def sort_nike_products(products_info, sort_order='asc'):
     if sort_order == 'asc':
-        return products_info.sort_values('Price', ascending=True, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True)
+        return products_info.sort_values(
+            'Price', ascending=True, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True
+        )
     elif sort_order == 'desc':
-        return products_info.sort_values('Price', ascending=False, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True)
+        return products_info.sort_values(
+            'Price', ascending=False, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True
+        )
     else:
         raise ValueError('Invalid sort order: Must be "asc" or "desc".')
-        
+
 
 def get_product_description(product_url):
     validate_url(product_url)
