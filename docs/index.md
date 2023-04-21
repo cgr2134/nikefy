@@ -1,6 +1,6 @@
 # Welcome to Nikefy's documentation!
 
-## This is first header
+## This is a first header
 
 - These
 - are 

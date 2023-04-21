@@ -1,6 +1,10 @@
 .DS_Store
 .idea/
 
+docs/_build
+docs/_static
+docs/_templates
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
