@@ -78,7 +78,7 @@ class TestNikefy(unittest.TestCase):
                 'down your preferred path and come back for your next run feeling ready '
                 'and reinvigorated.'
                 'Shown: White/Sail/Oatmeal/Obsidian'
-                'Style: DR2615-101'
+                'Style: DR2615-101',
             )
 
     def test_get_nike_products_integration(self):
