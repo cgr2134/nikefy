@@ -17,6 +17,15 @@ def request_page(url):
 
 
 def get_nike_products(url):
+    """
+    This function takes a Nike.com URL and returns a dataframe.
+
+    Args:
+         url (:obj:`str`): String Nike.com url
+
+    Returns:
+        data: A panda Dataframe with various information regarding Nike products.
+    """
     validate_url(url)
     soup = request_page(url)
     products_info = []
@@ -40,6 +49,15 @@ def get_nike_products(url):
 
 
 def sort_nike_products(products_info, sort_order='asc'):
+    """
+    This function sorts Nike dataframe based on price. Can be sorted in ascending or descending order.
+    Args:
+         products_info (:obj: `dataframe`): Nike products dataframe
+         sort_order (:obj: `str`): Ascending or descending order
+
+    Returns:
+        data: A panda Dataframe in ascending or descending order.
+    """
     if sort_order == 'asc':
         return products_info.sort_values(
             'Price', ascending=True, key=lambda val: val.str.replace('$', '').astype('float64'), ignore_index=True
@@ -53,6 +71,14 @@ def sort_nike_products(products_info, sort_order='asc'):
 
 
 def get_product_description(product_url):
+    """
+    This function returns a specific product's description.
+    Args:
+         product_url (:obj: `str`): Nike product's url
+
+    Returns:
+         description: A string description.
+    """
     validate_url(product_url)
     soup = request_page(product_url)
     description = soup.find('div', {'class': 'description-preview body-2 css-1pbvugb'}).text.strip()
