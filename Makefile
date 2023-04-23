@@ -1,3 +1,5 @@
+TMPREPO=/tmp/docs/nikefy
+
 #########
 # BUILD #
 #########
@@ -84,6 +86,20 @@ deep-clean: ## clean everything from the repository
 
 clean: ## clean the repository
 	rm -rf .coverage coverage cover htmlcov logs build dist *.egg-info .pytest_cache
+
+docs:
+	$(MAKE) -C docs/ clean
+	$(MAKE) -C docs/ html
+
+pages:
+	rm -rf $(TMPREPO)
+	git clone -b gh-pages https://github.com/cgr2134/nikefy.git $(TMPREPO)
+	rm -rf $(TMPREPO)/*
+	cp -r docs/build/html/* $(TMPREPO)
+	cd $(TMPREPO);\
+	git add -A ;\
+	git commit -a -m 'auto-updating docs' ;\
+	git push
 
 ############################################################################################
 
