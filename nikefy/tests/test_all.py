@@ -60,31 +60,25 @@ class TestNikefy(unittest.TestCase):
         with patch('nikefy.request_page') as mock_request_page:
             mock_request_page.return_value = BeautifulSoup(
                 '<div class="description-preview body-2 '
-                'css-1pbvugb"><p>Once you take a few strides in the Nike '
-                'Air Zoom Alphafly NEXT% 2, you’ll never look at your '
-                'favorite pair of old racing shoes the same way again. '
-                'These rocket ships are made to help shave precious time '
-                'off your personal records without surrendering the '
-                'foundation you need to go the full distance. A thick, '
-                'lightweight support system marries the 2 worlds of '
-                'comfort and speed in holy running matrimony. Enjoy the '
-                'greatest energy return of all our racing shoes while you '
-                'chase your personal bests.</p></div>',
+                'css-1pbvugb"><p>With maximum cushioning to support every mile, the Invincible 3 gives you our '
+                'highest level of comfort underfoot to help you stay on your feet today, tomorrow and beyond. '
+                'Designed to help keep you on the run, it’s super supportive and bouncy, so that you can propel down '
+                'your preferred path and come back for your next run feeling ready and reinvigorated.</p></div>',
                 'html.parser',
             )
             description = get_product_description(
-                'https://www.nike.com/t/alphafly-2-mens-road-racing-shoes-8lD0jN' '/DN3555-600'
+                'https://www.nike.com/t/invincible-3-mens-road-running-shoes-CLdFjq/DR2615-101'
             )
             self.assertEqual(
                 description,
-                'Once you take a few strides in the Nike Air Zoom Alphafly NEXT% 2, you’ll '
-                'never look at your favorite pair of old racing shoes the same way again. '
-                'These rocket ships are made to help shave precious time off your personal '
-                'records without surrendering the foundation you need to go the full '
-                'distance. A thick, lightweight support system marries the 2 worlds of '
-                'comfort and speed in holy running matrimony. Enjoy the greatest energy '
-                'return of all our racing shoes while you chase your personal bests.Shown: '
-                'Hyper Pink/Laser Orange/White/BlackStyle: DN3555-600',
+                'With maximum cushioning to support every mile, the Invincible 3 '
+                'gives you our highest level of comfort underfoot to help you stay '
+                'on your feet today, tomorrow and beyond. Designed to help keep you '
+                'on the run, it’s super supportive and bouncy, so that you can propel '
+                'down your preferred path and come back for your next run feeling ready '
+                'and reinvigorated.'
+                'Shown: White/Sail/Oatmeal/Obsidian'
+                'Style: DR2615-101'
             )
 
     def test_get_nike_products_integration(self):
