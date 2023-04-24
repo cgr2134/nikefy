@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Nikefy’s documentation! &mdash; Nikefy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Nikefy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Nikefy’s documentation!</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Nikefy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Nikefy’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-nikefy-s-documentation">
+<h1>Welcome to Nikefy’s documentation!<a class="headerlink" href="#welcome-to-nikefy-s-documentation" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>Python library that amasses metadata from Nike.com website.
+Nikefy will allow users to quickly access metadata from Nike.com website such as products and prices data.</p>
+<ul class="simple">
+<li><p>Create a database that easily queries shoes</p></li>
+<li><p>Easily find sold out products</p></li>
+<li><p>Find out most popular products via ratings</p></li>
+</ul>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nikefy</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nikefy</span> <span class="k">as</span> <span class="nn">nf</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.nike.com/w/mens-shoes-nik1zy7ok&#39;</span>
+<span class="n">nf</span><span class="o">.</span><span class="n">get_nike_products</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">nike_products</span> <span class="o">=</span> <span class="n">nf</span><span class="o">.</span><span class="n">get_nike_products</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">sorted_nike_products</span> <span class="o">=</span> <span class="n">sort_nike_products</span><span class="p">(</span><span class="n">nike_products</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get_nike_products()</span></code> gets Men’s shoes products from Nike.com website and returns a dataframe</p>
+<p><code class="docutils literal notranslate"><span class="pre">sort_nike_products()</span></code> sorts Men’s shoes products based on price</p>
+</section>
+<section id="example">
+<h1>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h1>
+<p>Running the following code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nikefy</span> <span class="k">as</span> <span class="nn">nf</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.nike.com/w/mens-shoes-nik1zy7ok&#39;</span>
+<span class="n">nike_products</span> <span class="o">=</span> <span class="n">nf</span><span class="o">.</span><span class="n">get_nike_products</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nike_products</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Outputs something like this to the console</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                             Product Name Price  ...                                        Description                                        Product URL
+0                         Nike Pegasus 40  $130  ...  A springy ride for every run, the Peg’s famili...  https://www.nike.com/t/pegasus-40-mens-road-ru...
+1                     Nike Dunk Low Retro  $110  ...  Created for the hardwood but taken to the stre...  https://www.nike.com/t/dunk-low-retro-mens-sho...
+2                        Air Jordan 1 Low  $110  ...  Inspired by the original that debuted in 1985,...  https://www.nike.com/t/air-jordan-1-low-mens-s...
+3                        Air Jordan 1 Mid  $125  ...  Inspired by the original AJ1, this mid-top edi...  https://www.nike.com/t/air-jordan-1-mid-mens-s...
+4                      Nike Free Metcon 5  $120  ...  When your workouts wade into the nitty gritty,...  https://www.nike.com/t/free-metcon-5-mens-trai...
+5                          Cosmic Unity 3  $170  ...  Better for your game, designed with sustainabi...  https://www.nike.com/t/cosmic-unity-3-basketba...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use Nikefy to further simplify the shopping experience.</p>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Carlos Raymundo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
