@@ -95,7 +95,7 @@ pages:
 	rm -rf $(TMPREPO)
 	git clone -b gh-pages https://github.com/cgr2134/nikefy.git $(TMPREPO)
 	rm -rf $(TMPREPO)/*
-	cp -r docs/build/html/* $(TMPREPO)
+	cp -r docs/_build/html/* $(TMPREPO)
 	cd $(TMPREPO);\
 	git add -A ;\
 	git commit -a -m 'auto-updating docs' ;\
