@@ -56,6 +56,9 @@ Outputs something like this to the console
 5                          Cosmic Unity 3  $170  ...  Better for your game, designed with sustainabi...  https://www.nike.com/t/cosmic-unity-3-basketba...
 ```
 
+## Demo
+![](https://raw.githubusercontent.com/cgr2134/nikefy/main/docs/img/demo.gif)
+
 ## Details
 This project is a pure python project using modern tooling. It uses a `Makefile` as a command registry, with the following commands:
 - `make`: list available commands
