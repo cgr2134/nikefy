@@ -6,7 +6,7 @@ Python library that amasses metadata from Nike.com website.
 [![Build Status](https://github.com/cgr2134/nikefy/workflows/Build%20Status/badge.svg?branch=main)](https://github.com/cgr2134/nikefy/actions?query=workflow%3A%22Build+Status%22)
 [![codecov](https://codecov.io/gh/cgr2134/nikefy/branch/main/graph/badge.svg)](https://codecov.io/gh/cgr2134/nikefy)
 [![PyPI](https://img.shields.io/pypi/v/nikefy)](https://pypi.org/project/nikefy/)
-[![Docs](https://img.shields.io/readthedocs/nikefy.svg)](https://nikefy.readthedocs.io)
+[![Documentation Status](https://readthedocs.org/projects/nikefy/badge/?version=latest)](https://nikefy.readthedocs.io/en/latest/?badge=latest)
 ## Overview
 
 Nikefy will allow users to quickly access metadata from Nike.com website such as products and prices data.
