@@ -48,6 +48,9 @@ Outputs something like this to the console
 5                          Cosmic Unity 3  $170  ...  Better for your game, designed with sustainabi...  https://www.nike.com/t/cosmic-unity-3-basketba...
 ```
 
+## Demo
+![](https://raw.githubusercontent.com/cgr2134/nikefy/main/docs/img/demo.gif)
+
 ```eval_rst
 .. note::
     Use Nikefy to further simplify the shopping experience.
