@@ -86,7 +86,16 @@ def get_product_description(product_url):
 
 
 def filter_nike_products(products_info, price_range=None, product_type=None):
+    """
+    This function returns filtered nike product dataframe
+    Args:
+         products_info (:obj: `dataframe`): Nike products dataframe
+         price_range (:obj: set): Price range
+         product_type (:obj: str): Product type
 
+    Returns:
+         filtered_data: A filtered dataframe.
+    """
     if price_range:
         min_price, max_price = price_range
         filtered_data = products_info.copy()
