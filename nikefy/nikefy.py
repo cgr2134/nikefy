@@ -83,3 +83,34 @@ def get_product_description(product_url):
     soup = request_page(product_url)
     description = soup.find('div', {'class': 'description-preview body-2 css-1pbvugb'}).text.strip()
     return description
+
+
+def filter_nike_products(products_info, price_range=None, product_type=None):
+    """
+    This function returns filtered nike product dataframe
+    Args:
+         products_info (:obj: `dataframe`): Nike products dataframe
+         price_range (:obj: set): Price range
+         product_type (:obj: str): Product type
+
+    Returns:
+         filtered_data: A filtered dataframe.
+    """
+    if price_range:
+        min_price, max_price = price_range
+        filtered_data = products_info.copy()
+        filtered_data['Price'] = filtered_data['Price'].str.replace('$', '').astype(float)
+        filtered_data = filtered_data.loc[(filtered_data['Price'] >= min_price) & (filtered_data['Price'] <= max_price)]
+        filtered_data['Price'] = filtered_data['Price'].astype(str)
+    else:
+        filtered_data = products_info.copy()
+        filtered_data['Price'] = filtered_data['Price'].str.replace('$', '').astype(float)
+        filtered_data['Price'] = filtered_data['Price'].astype(str)
+
+    if product_type:
+        filtered_data = filtered_data.loc[filtered_data['Type'] == product_type]
+
+    if filtered_data.empty:
+        print("No products found for the specified criteria.")
+    else:
+        return filtered_data
