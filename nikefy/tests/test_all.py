@@ -1,4 +1,11 @@
-from nikefy import request_page, validate_url, get_nike_products, sort_nike_products, get_product_description
+from nikefy import (
+    request_page,
+    validate_url,
+    get_nike_products,
+    sort_nike_products,
+    get_product_description,
+    filter_nike_products,
+)
 from unittest.mock import patch, mock_open, Mock, call
 import unittest
 from bs4 import BeautifulSoup
@@ -86,6 +93,19 @@ class TestNikefy(unittest.TestCase):
         data = get_nike_products(url)
         self.assertIsInstance(data, pd.DataFrame)
         self.assertGreater(len(data), 0)
+
+    def test_filter_nike_products(self):
+        data = {
+            'Name': ['Nike Air Max 90', 'Nike Air Force 1', "Nike Blazer Mid '77"],
+            'Type': ["Men's Shoes", "Women's Shoes", "Men's Shoes"],
+            'Price': ['$130', '$120', '$90'],
+        }
+        products_info = pd.DataFrame(data)
+
+        filtered_data = filter_nike_products(products_info, price_range=(100, 130), product_type="Men's Shoes")
+        expected_data = pd.DataFrame({'Name': ['Nike Air Max 90'], 'Type': ["Men's Shoes"], 'Price': ['130.0']})
+
+        self.assertTrue(expected_data.equals(filtered_data))
 
 
 if __name__ == '__main__':
