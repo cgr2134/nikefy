@@ -96,21 +96,18 @@ def filter_nike_products(products_info, price_range=None, product_type=None):
     Returns:
          filtered_data: A filtered dataframe.
     """
+    filtered_data = products_info.copy()
+
     if price_range:
         min_price, max_price = price_range
-        filtered_data = products_info.copy()
         filtered_data['Price'] = filtered_data['Price'].str.replace('$', '').astype(float)
         filtered_data = filtered_data.loc[(filtered_data['Price'] >= min_price) & (filtered_data['Price'] <= max_price)]
-        filtered_data['Price'] = filtered_data['Price'].astype(str)
-    else:
-        filtered_data = products_info.copy()
-        filtered_data['Price'] = filtered_data['Price'].str.replace('$', '').astype(float)
-        filtered_data['Price'] = filtered_data['Price'].astype(str)
 
     if product_type:
         filtered_data = filtered_data.loc[filtered_data['Type'] == product_type]
 
     if filtered_data.empty:
-        print("No products found for the specified criteria.")
-    else:
-        return filtered_data
+        raise ValueError("No products found for the specified criteria.")
+
+    filtered_data['Price'] = filtered_data['Price'].astype(str)
+    return filtered_data

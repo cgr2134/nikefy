@@ -10,6 +10,7 @@ from unittest.mock import patch, mock_open, Mock, call
 import unittest
 from bs4 import BeautifulSoup
 import pandas as pd
+from pandas.testing import assert_frame_equal
 
 
 class TestNikefy(unittest.TestCase):
@@ -105,7 +106,42 @@ class TestNikefy(unittest.TestCase):
         filtered_data = filter_nike_products(products_info, price_range=(100, 130), product_type="Men's Shoes")
         expected_data = pd.DataFrame({'Name': ['Nike Air Max 90'], 'Type': ["Men's Shoes"], 'Price': ['130.0']})
 
-        self.assertTrue(expected_data.equals(filtered_data))
+        assert_frame_equal(filtered_data, expected_data)
+
+    def test_filter_nike_products_invalid_price_range(self):
+        data = {
+            'Name': ['Nike Air Max 90', 'Nike Air Force 1', "Nike Blazer Mid '77"],
+            'Type': ["Men's Shoes", "Women's Shoes", "Men's Shoes"],
+            'Price': ['$130', '$120', '$90'],
+        }
+        products_info = pd.DataFrame(data)
+
+        with self.assertRaises(ValueError):
+            filter_nike_products(products_info, price_range=(150, 200))
+
+    def test_filter_nike_products_invalid_product_type(self):
+        data = {
+            'Name': ['Nike Air Max 90', 'Nike Air Force 1', "Nike Blazer Mid '77"],
+            'Type': ["Men's Shoes", "Women's Shoes", "Men's Shoes"],
+            'Price': ['$130', '$120', '$90'],
+        }
+        products_info = pd.DataFrame(data)
+
+        with self.assertRaises(ValueError):
+            filter_nike_products(products_info, product_type="Kids' Shoes")
+
+    def test_filter_nike_products_no_results(self):
+        data = {
+            'Name': ['Nike Air Max 90', 'Nike Air Force 1', "Nike Blazer Mid '77"],
+            'Type': ["Men's Shoes", "Women's Shoes", "Men's Shoes"],
+            'Price': ['$130', '$120', '$90'],
+        }
+        products_info = pd.DataFrame(data)
+
+        with self.assertRaises(ValueError) as cm:
+            filter_nike_products(products_info, price_range=(200, 300), product_type="Women's Shoes")
+
+        self.assertEqual(str(cm.exception), "No products found for the specified criteria.")
 
 
 if __name__ == '__main__':
