@@ -11,6 +11,7 @@ import unittest
 from bs4 import BeautifulSoup
 import pandas as pd
 from pandas.testing import assert_frame_equal
+import requests
 
 
 class TestNikefy(unittest.TestCase):
@@ -22,6 +23,21 @@ class TestNikefy(unittest.TestCase):
         url = 'https://www.adidas.com/'
         with self.assertRaises(ValueError):
             validate_url(url)
+
+    @patch('nikefy.requests.get')
+    def test_request_page_success(self, mock_get):
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.content = b'<html><head></head><body></body></html>'
+        url = 'https://www.example.com'
+        soup = request_page(url)
+        self.assertIsNotNone(soup)
+
+    @patch('nikefy.requests.get')
+    def test_request_page_failure(self, mock_get):
+        mock_get.side_effect = requests.exceptions.RequestException()
+        url = 'https://www.example.com'
+        with self.assertRaises(requests.exceptions.RequestException):
+            request_page(url)
 
     def test_sort_nike_products_asc(self):
         products_info = pd.DataFrame(

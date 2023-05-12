@@ -16,10 +16,11 @@ def request_page(url):
     """
     try:
         page = requests.get(url)
+        page.raise_for_status()  # Raises HTTPError for 4xx and 5xx status codes
         soup = BeautifulSoup(page.content, 'html.parser')
         return soup
-    except requests.exceptions.RequestException as e:
-        print("Error requesting page:", e)
+    except (requests.exceptions.RequestException, requests.exceptions.HTTPError) as e:
+        raise e
 
 
 def get_nike_products(url, num_products=None):
