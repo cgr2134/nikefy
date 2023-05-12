@@ -11,7 +11,7 @@ name = "nikefy"
 authors = [{name = "Carlos Raymundo", email = "cgr2134@columbia.edu"}]
 description="This python library acquires metadata from products in the Nike.com website"
 readme = "README.md"
-version = "0.0.1"
+version = "0.1.2"
 requires-python = ">=3.7"
 
 dependencies = [
