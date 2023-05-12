@@ -32,7 +32,7 @@ sorted_nike_products = sort_nike_products(nike_products, sort_order='asc')
 filtered_nike_products = filter_nike_products(nike_products, price_range=(100, 150), product_type="Men's Shoes")
 ```
 
-`get_nike_products()` gets Men's shoes products from Nike.com website and returns a dataframe
+`get_nike_products()` gets Men's shoes products from Nike.com website, can set max number of products, and returns a dataframe
 
 `sort_nike_products()` sorts Men's shoes products based on price
 
