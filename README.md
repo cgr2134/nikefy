@@ -29,11 +29,14 @@ url = 'https://www.nike.com/w/mens-shoes-nik1zy7ok'
 nf.get_nike_products(url)
 nike_products = nf.get_nike_products(url)
 sorted_nike_products = sort_nike_products(nike_products, sort_order='asc')
+filtered_nike_products = filter_nike_products(nike_products, price_range=(100, 150), product_type="Men's Shoes")
 ```
 
 `get_nike_products()` gets Men's shoes products from Nike.com website and returns a dataframe
 
 `sort_nike_products()` sorts Men's shoes products based on price
+
+`filter_nike_products()` filters Men's shoes based on price range and type
 
 # Example
 Running the following code
@@ -43,7 +46,6 @@ import nikefy as nf
 url = 'https://www.nike.com/w/mens-shoes-nik1zy7ok'
 nike_products = nf.get_nike_products(url)
 print(nike_products)
-
 ```
 Outputs something like this to the console
 ```
