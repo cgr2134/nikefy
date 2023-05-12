@@ -11,17 +11,25 @@ def validate_url(url):
 
 
 def request_page(url):
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, 'html.parser')
-    return soup
+    """
+    add error handling for cases where the request to the website fails or times out.
+    """
+    try:
+        page = requests.get(url)
+        page.raise_for_status()  # Raises HTTPError for 4xx and 5xx status codes
+        soup = BeautifulSoup(page.content, 'html.parser')
+        return soup
+    except (requests.exceptions.RequestException, requests.exceptions.HTTPError) as e:
+        raise e
 
 
-def get_nike_products(url):
+def get_nike_products(url, num_products=None):
     """
     This function takes a Nike.com URL and returns a dataframe.
 
     Args:
          url (:obj:`str`): String Nike.com url
+         num_products (:obj:`int`, optional): Maximum number of products to return
 
     Returns:
         data: A panda Dataframe with various information regarding Nike products.
@@ -30,7 +38,9 @@ def get_nike_products(url):
     soup = request_page(url)
     products_info = []
     products = soup.find_all('div', {'class': 'product-card__body'})
-    for product in products:
+    for i, product in enumerate(products):
+        if num_products and i >= num_products:
+            break
         name = product.find('div', {'class': 'product-card__title'}).text.strip()
         price = product.find('div', {'class': 'product-price'}).text.strip()
         type = product.find('div', {'class': 'product-card__subtitle'}).text.strip()
