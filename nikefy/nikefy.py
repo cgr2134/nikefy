@@ -12,7 +12,7 @@ def validate_url(url):
 
 def request_page(url):
     """
-    add error handling for cases where the request to the website fails or times out. 
+    add error handling for cases where the request to the website fails or times out.
     """
     try:
         page = requests.get(url)
@@ -20,7 +20,6 @@ def request_page(url):
         return soup
     except requests.exceptions.RequestException as e:
         print("Error requesting page:", e)
-
 
 
 def get_nike_products(url, num_products=None):
@@ -56,7 +55,6 @@ def get_nike_products(url, num_products=None):
         products_info.append(data)
     data = pd.DataFrame(products_info)
     return data
-
 
 
 def sort_nike_products(products_info, sort_order='asc'):
